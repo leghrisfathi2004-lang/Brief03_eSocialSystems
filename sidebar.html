@@ -1,48 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Menu e-Social</title>
+    <style>
+        /* Ajout d'une police plus proche du design si besoin */
+        body { font-family: 'Segoe UI', sans-serif; }
+    </style>
 </head>
-<body>
-    <!--copy into ur html files !!-->
-    <div class="fixed left-0 w-64 h-screen bg-gray-800 text-white">
-            <h2 class="text-3xl text-center hover: font-bold p-4 border-b border-gray-700">e-Social </h2>
-            <ul>
-                <li class="block h-full w-full leading-[65px] text-[20px] 
-                    pl-10 border-box border-top border-top-white/10 border-b 
-                    border-b-black transition-all duration-400 gap-20 hover:pl-[50px]">
-                        <i class="fa-regular fa-house"></i>
-                        <a href="#" class="relative left-3">Tableau de bord</a>
-                </li>
-                <li class="block h-full w-full leading-[65px] text-[20px] 
-                    pl-10 border-box border-top border-top-white/10 border-b 
-                    border-b-black transition-all duration-400 hover:pl-[50px]">
-                        <i class="fa-solid fa-building"></i>
-                        <a href="#" class="relative left-3">Employeurs</a>
-                </li>
-                <li class="block h-full w-full leading-[65px] text-[20px] 
-                    pl-10 border-box border-top border-top-white/10 border-b 
-                    border-b-black transition-all duration-400 hover:pl-[50px]">
-                        <i class="fa-solid fa-user"></i></i>
-                        <a href="#" class="relative left-3">Employers</a>
-                </li>
-                <li class="block h-full w-full leading-[65px] text-[20px] 
-                    pl-10 border-box border-top border-top-white/10 border-b 
-                    border-b-black transition-all duration-400 hover:pl-[50px]">
-                    <i class="fa-solid fa-file-lines"></i>
-                    <a href="./presence/presence.html" class="relative left-3">Declaration</a>
-                </li>
-                <li class="block h-full w-full leading-[65px] text-[20px] 
-                    pl-10 border-box border-top border-top-white/10 border-b 
-                    border-b-black transition-all duration-400 hover:pl-[50px]">
-                    <i class="fa-solid fa-clock-rotate-left"></i>
-                    <a href="./presence/presence.html" class="relative left-3">Historique</a>
-                </li>
-            </ul>
-        </div>
-</body>
+<body class="bg-gray-100">
+
+    <div class="fixed left-0 top-0 w-64 h-screen bg-[#0f172a] text-slate-400 p-4 flex flex-col">
+        
+        <div class="mb-8 px-2">
+           </div>
+
+        <ul class="space-y-2 font-medium">
+            
+            <li>
+                <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors">
+                    <i class="fa-solid fa-chart-pie w-5 text-center"></i>
+                    <span>Tableau de bord</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-900/50">
+                    <i class="fa-solid fa-building w-5 text-center"></i>
+                    <span>Employeurs</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors">
+                    <i class="fa-solid fa-users w-5 text-center"></i>
+                    <span>Employés</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="./presence/presence.html" class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors">
+                    <i class="fa-solid fa-file-invoice-dollar w-5 text-center"></i>
+                    <span>Déclarations</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="./presence/presence.html" class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors">
+                    <i class="fa-solid fa-clock-rotate-left w-5 text-center"></i>
+                    <span>Historique</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="flex items-center justify-between px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors group">
+                    <div class="flex items-center gap-4">
+                        <i class="fa-solid fa-triangle-exclamation w-5 text-center"></i>
+                        <span>Anomalies</span>
+                    </div>
+                    <span class="text-sm">0</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+    </body>
 </html>
