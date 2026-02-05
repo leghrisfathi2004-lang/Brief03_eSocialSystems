@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <title>Menu e-Social</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <div
+      class="fixed left-0 top-0 w-64 h-screen bg-[#0f172a] text-slate-400 p-4 flex flex-col"
+    >
+      <h2 class="text-3xl text-center font-bold p-4 border-b border-gray-700">
+        e-worker
+      </h2>
+
+      <ul class="space-y-2 font-medium">
+        <li>
+          <a
+            href="#"
+            class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors"
+          >
+            <i class="fa-solid fa-chart-pie w-5 text-center"></i>
+            <span>Tableau de bord</span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="#"
+            class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors"
+          >
+            <i class="fa-solid fa-building w-5 text-center"></i>
+            <span>Employeurs</span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="index.html"
+            class="flex items-center gap-4 px-4 py-3 rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-900/50"
+          >
+            <i class="fa-solid fa-users w-5 text-center"></i>
+            <span>Employés</span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="./presence/presence.html"
+            class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors"
+          >
+            <i class="fa-solid fa-file-invoice-dollar w-5 text-center"></i>
+            <span>Déclarations</span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="./presence/presence.html"
+            class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors"
+          >
+            <i class="fa-solid fa-clock-rotate-left w-5 text-center"></i>
+            <span>Historique</span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-between px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors group"
+          >
+            <div class="flex items-center gap-4">
+              <i class="fa-solid fa-triangle-exclamation w-5 text-center"></i>
+              <span>Anomalies</span>
+            </div>
+            <span class="text-sm">0</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="ml-64 p-8">
+      <div class="flex justify-between items-center">
+        <div>
+          <h1 class="text-2xl font-semibold text-slate-700">Employés</h1>
+            <hr class="w-[89rem] border-gray-300 my-4">
+          <p class="text-slate-400">Gestion de suivi des employés</p>
+        </div>
+
+        <button
+          class="bg-blue-600 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-blue-700 transition"
+        >
+          Nouvel Employé
+        </button>
+      </div>
+
+      <div class="flex gap-4 mt-6">
+        <input
+          type="text"
+          placeholder="Rechercher par nom ou ID"
+          class="border rounded-lg px-4 py-2 w-72 outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        <select
+          class="border rounded-lg px-4 py-2 w-60 outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          <option>Tous les employeurs</option>
+        </select>
+      </div>
+
+      <div class="bg-white rounded-xl mt-6 p-6 shadow-sm">
+        <table class="w-full text-left">
+          <thead class="bg-gray-100 text-slate-500">
+            <tr>
+              <th class="p-3">ID EMPLOYE</th>
+              <th class="p-3">NOM COMPLET</th>
+              <th class="p-3">EMPLOYEUR</th>
+              <th class="p-3">SALAIRE MENSUEL</th>
+              <th class="p-3">DROITS ACQUIS</th>
+            </tr>
+          </thead>
+
+          <tbody id="employeesTable" class="text-slate-600"></tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
