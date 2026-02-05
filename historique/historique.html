@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        :root {
+        /* Primary Colors */
+        --color-primary: #3b82f6;
+        --color-primary-dark: #2563eb;
+        --color-primary-light: #60a5fa;
+        
+        /* Dark Theme Colors */
+        --color-dark-bg: #0f172a;
+        --color-dark-surface: #1e293b;
+        --color-dark-hover: #334155;
+        
+        /* Text Colors */
+        --color-text-primary: #f8fafc;
+        --color-text-secondary: #cbd5e1;
+        --color-text-muted: #94a3b8;
+        
+        /* Accent Colors */
+        --color-accent-blue: #3b82f6;
+        --color-accent-success: #10b981;
+        --color-accent-warning: #f59e0b;
+        --color-accent-danger: #ef4444;
+        
+        /* Border Colors */
+        --color-border: #374151;
+        --color-border-light: #4b5563;
+      }
+
+      @theme {
+        --color-primary-600: var(--color-primary);
+        --color-primary-700: var(--color-primary-dark);
+        --color-primary-500: var(--color-primary-light);
+        
+        --color-dark-900: var(--color-dark-bg);
+        --color-dark-800: var(--color-dark-surface);
+        --color-dark-700: var(--color-dark-hover);
+      }
+    </style>
+    <title>HISTORIQUE</title>
+</head>
+
+<body class="max-w-screen max-h-screen">
+    <!--sidebaaar-->
+    <div class="fixed left-0 top-0 w-64 h-screen bg-[#0f172a] text-slate-400 p-4 flex flex-col">
+        <h2 class="text-3xl text-center font-bold p-4 border-b border-gray-700">e-worker </h2>
+
+        <ul class="space-y-2 font-medium">
+            <li>
+                <a href="#"
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors">
+                    <i class="fa-solid fa-chart-pie w-5 text-center"></i>
+                    <span>Tableau de bord</span>
+                </a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors">
+                    <i class="fa-solid fa-building w-5 text-center"></i>
+                    <span>Employeurs</span>
+                </a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors">
+                    <i class="fa-solid fa-users w-5 text-center"></i>
+                    <span>Employés</span>
+                </a>
+            </li>
+            <li>
+                <a href="./presence/presence.html"
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors">
+                    <i class="fa-solid fa-file-invoice-dollar w-5 text-center"></i>
+                    <span>Déclarations</span>
+                </a>
+            </li>
+            <li>
+                <a href="./presence/presence.html"
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-900/50">
+                    <i class="fa-solid fa-clock-rotate-left w-5 text-center"></i>
+                    <span>Historique</span>
+                </a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex items-center justify-between px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors group">
+                    <div class="flex items-center gap-4">
+                        <i class="fa-solid fa-triangle-exclamation w-5 text-center"></i>
+                        <span>Anomalies</span>
+                    </div>
+                    <span class="text-sm">0</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+    <main class="ml-64  p-8 flex flex-col gap-10 justify-center">
+        <div class="flex justify-between ">
+            <div class="w-[65%] font-extrabold text-2xl p-4">
+                HISTORIQUE
+            </div>
+            <div class="w-[30%]">
+                <input type="date"  name="" id="filterDate" class="border-y-2 p-4 right-0 rounded-lg">
+            </div>
+        </div>
+
+        <div id="historique" class="w-full h-120 flex flex-col items-center gap-4">
+            <div class="w-full">
+                <div class="w-full bg-gray-300 rounded-t-xl p-5 flex justify-between">
+                    <div class="flex flex-col gap-0.5">
+                        <h1 id="hisName" class="text-xl font-bold text-slate-800 leading-tight">
+                            TechNova SARL
+                        </h1>
+                        <p id="hisDate" class="text-xs font-medium text-slate-400 uppercase tracking-wide">
+                            Janvier 2025
+                        </p>
+                    </div>
+                    <div class="relative flex flex-wrap items-center">
+                        <input
+                            class="relative h-6 w-12 cursor-pointer appearance-none rounded-xl ring-2 ring-slate-400 transition-colors ring-inset after:absolute after:top-0 after:left-0 after:h-6 after:w-6 after:rounded-full after:bg-white after:ring-2 after:ring-slate-600 after:transition-all after:ring-inset checked:bg-emerald-200 checked:ring-emerald-500 checked:after:left-6 checked:after:bg-green-700 checked:after:ring-emerald-500 hover:ring-slate-500 after:hover:ring-slate-600 checked:hover:bg-emerald-300 checked:hover:ring-emerald-600 checked:after:hover:ring-emerald-600 checked:focus:bg-emerald-400 checked:focus:ring-emerald-700 checked:after:focus:ring-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-slate-200 disabled:after:ring-slate-300"
+                            type="checkbox" onchange="functionHere" />
+                            <!--call a function(this), and by this para u can look for the closest donnes(data & name) and get worker infos by it to affiche-->
+                    </div>
+                </div>
+                <!--worker info goes here-->
+                <div class="bg-white rounded-b-xl shadow-sm overflow-hidden border border-slate-200">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-slate-100 border-b border-slate-200 text-slate-600 text-sm uppercase">
+                            <tr>
+                                <th class="p-4 font-semibold">ID</th>
+                                <th class="p-4 font-semibold">Nom Complet</th>
+                                <th class="p-4 font-semibold text-right">Salaire (DH)</th>
+                                <th class="p-4 font-semibold text-right">Cot. Salariale</th>
+                                <th class="p-4 font-semibold text-right">Cot. Patronale</th>
+                                <th class="p-4 font-semibold text-right text-blue-600">Total</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="divide-y divide-slate-100 text-slate-700">
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="p-4 text-slate-400 font-mono text-xs">#101</td>
+                                <td class="p-4 font-medium">Ahmed El Amrani</td>
+                                <td class="p-4 text-right">3 000.00</td>
+                                <td class="p-4 text-right text-red-500">- 120.00</td>
+                                <td class="p-4 text-right text-red-500">180.00</td>
+                                <td class="p-4 text-right font-bold text-blue-600">300.00</td>
+                            </tr>
+
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="p-4 text-slate-400 font-mono text-xs">#102</td>
+                                <td class="p-4 font-medium">Sara Benali</td>
+                                <td class="p-4 text-right">4 500.00</td>
+                                <td class="p-4 text-right text-red-500">- 180.00</td>
+                                <td class="p-4 text-right text-red-500">-270.00</td>
+                                <td class="p-4 text-right font-bold text-blue-600">450.00</td>
+                            </tr>
+                        </tbody>
+
+                        <tfoot class="bg-slate-50 font-bold border-t-2 border-slate-200">
+                            <tr>
+                                <td colspan="5" class="p-4 text-right text-slate-600">Total Final à Payer:</td>
+                                <td class="p-4 text-right text-xl text-blue-700">750.00 DH</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+    </main>
+
+
+
+
+</body>
+
+</html>
