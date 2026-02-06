@@ -1,19 +1,23 @@
 // Buttons
 const newEmpBtn = document.querySelector("#new-emp-btn");
 const closeOverlay = document.querySelector("#close-overlay");
+const closeOverlay2 = document.querySelector("#close-overlay-2");
 const addEmpBtn = document.querySelector("#emp-btn");
+const updateEmpBtn = document.querySelector("#update-btn");
 
 const prevBtn = document.querySelector("#prev");
 const nextBtn = document.querySelector("#next");
 
 // form section
 const form = document.querySelector("#form");
+const updateForm = document.querySelector("#form-update");
 const overlay = document.querySelector("#overlay");
 const error = document.querySelector("#error");
 const message = document.querySelector("#message");
 
 // Inputs
 const raisonSocial = document.querySelector("#raison-sociale");
+const raisonSocial2 = document.querySelector("#raison-sociale-2");
 
 // table section
 const tbody = document.querySelector("#tbody");
@@ -50,17 +54,25 @@ const secteurs = [
 ];
 
 let employers = JSON.parse(localStorage.getItem("employers")) || [];
-let count = 1;
+let count = parseInt(localStorage.getItem("employerId")) || 1;
 let currPage = 1;
 const itemsPerPage = 3;
 
 const selectElement = document.querySelector("#select");
+
+const selectElement2 = document.querySelector("#select-2");
 
 secteurs.forEach((secteur) => {
   const option = document.createElement("option");
   option.value = secteur.value;
   option.textContent = secteur.label;
   selectElement.appendChild(option);
+});
+secteurs.forEach((secteur) => {
+  const option = document.createElement("option");
+  option.value = secteur.value;
+  option.textContent = secteur.label;
+  selectElement2.appendChild(option);
 });
 
 // add new employer
@@ -72,13 +84,14 @@ function addNewEmployer(e) {
   }
 
   const newEmployer = {
-    id: crypto.randomUUID(),
+    id: count++,
     raisonSocial: raisonSocial.value,
     sector: selectElement.value,
     employees: [],
   };
 
   employers.push(newEmployer);
+  localStorage.setItem("employerId", JSON.stringify(count));
   localStorage.setItem("employers", JSON.stringify(employers));
   error.classList.add("hide");
   clearInputs();
@@ -137,7 +150,6 @@ function showAllEmployers() {
     updatePagination();
   });
 }
-
 showAllEmployers();
 
 // delete employer
@@ -146,35 +158,51 @@ function deleteEmployer(id) {
   // employers = employers.filter((employer) => employer.id !== id);
 
   localStorage.setItem("employers", JSON.stringify(employers));
+
+  const totalPages = getTotalPages();
+  if (currPage > totalPages && totalPages > 0) {
+    currPage = totalPages;
+    pagination.classList.add("hide");
+  }
   showAllEmployers();
 }
 
 // update employer
-function updateEmployer(id) {
-  employers = employers.map((employer) => {
-    if (employer.id == id) {
-      return {
-        ...employer,
-        raisonSocial: raisonSocial.value,
-        sector: selectElement.value,
-      };
-    }
-  });
-}
-
+let foundEmployer = {};
 function editEmployer(id) {
-  const employer = employers.find((employer) => employer.id == id);
+  foundEmployer = employers.find((employer) => employer.id == id);
 
-  if (employer) {
-    raisonSocial.value = employer.raisonSocial;
-    selectElement.value = employer.sector;
+  if (foundEmployer) {
+    raisonSocial2.value = foundEmployer.raisonSocial;
+    selectElement2.value = foundEmployer.sector;
   }
 
-  addEmpBtn.textContent = "Mettre a jour";
-  form.classList.remove("hide");
+  updateForm.classList.remove("hide");
   overlay.classList.remove("hide");
 }
 
+function updateEmployer(e) {
+  e.preventDefault();
+  employers = employers.map((employer) => {
+    if (employer.id == foundEmployer.id) {
+      return {
+        ...employer,
+        raisonSocial: raisonSocial2.value,
+        sector: selectElement2.value,
+      };
+    }
+
+    return employer;
+  });
+
+  localStorage.setItem("employers", JSON.stringify(employers));
+
+  foundEmployer = {};
+  raisonSocial2.value = "";
+  selectElement2.value = "";
+  showAllEmployers();
+}
+updateEmpBtn.addEventListener("click", updateEmployer);
 // Pagination Logic
 
 function getTotalPages() {
@@ -228,4 +256,18 @@ newEmpBtn.addEventListener("click", () => {
 closeOverlay.addEventListener("click", () => {
   form.classList.add("hide");
   overlay.classList.add("hide");
+});
+closeOverlay2.addEventListener("click", () => {
+  updateForm.classList.add("hide");
+  overlay.classList.add("hide");
+});
+
+tailwind.config = {
+  darkMode: "class",
+};
+
+const darkBtn = document.querySelector("#dark-btn");
+darkBtn.addEventListener("click", () => {
+  console.log(document.documentElement.classList);
+  document.documentElement.classList.toggle("dark");
 });
