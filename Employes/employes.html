@@ -92,15 +92,9 @@
       <div class="flex justify-between items-center">
         <div>
           <h1 class="text-2xl font-semibold text-slate-700">Employés</h1>
-            <hr class="w-[89rem] border-gray-300 my-4">
+          <hr class="w-[89rem] border-gray-300 my-4" />
           <p class="text-slate-400">Gestion de suivi des employés</p>
         </div>
-
-        <button
-          class="bg-blue-600 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-blue-700 transition"
-        >
-          Nouvel Employé
-        </button>
       </div>
 
       <div class="flex gap-4 mt-6">
@@ -115,23 +109,78 @@
         >
           <option>Tous les employeurs</option>
         </select>
+           <button
+          id="openModal"
+          class="bg-blue-600 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-blue-700"
+        >
+          Nouvel Employé
+        </button>
       </div>
 
-      <div class="bg-white rounded-xl mt-6 p-6 shadow-sm">
+      <div class="bg-white rounded-xl mt-5 p-6 shadow-sm">
         <table class="w-full text-left">
           <thead class="bg-gray-100 text-slate-500">
             <tr>
-              <th class="p-3">ID EMPLOYE</th>
-              <th class="p-3">NOM COMPLET</th>
-              <th class="p-3">EMPLOYEUR</th>
-              <th class="p-3">SALAIRE MENSUEL</th>
-              <th class="p-3">DROITS ACQUIS</th>
+              <th class="p-4">ID EMPLOYE</th>
+              <th class="p-4">NOM COMPLET</th>
+              <th class="p-4">EMPLOYEUR</th>
+              <th class="p-4">SALAIRE MENSUEL</th>
             </tr>
           </thead>
 
           <tbody id="employeesTable" class="text-slate-600"></tbody>
         </table>
       </div>
+
+      <div
+        id="employeeModal"
+        class="fixed inset-0 bg-black/40 hidden items-center justify-center"
+      >
+        <div class="bg-white rounded-xl p-6 w-[400px] shadow-lg">
+          <h2 class="text-xl font-semibold mb-4">Ajouter un employé</h2>
+
+          <form id="employeeForm" class="space-y-3">
+            <input
+              id="name"
+              type="text"
+              placeholder="Nom complet"
+              class="w-full border p-2 rounded-lg"
+              required
+            />
+            <input
+              id="company"
+              type="text"
+              placeholder="Employeur"
+              class="w-full border p-2 rounded-lg"
+              required
+            />
+            <input
+              id="salary"
+              type="number"
+              placeholder="Salaire"
+              class="w-full border p-2 rounded-lg"
+              required
+            />
+
+            <div class="flex justify-end gap-2 mt-4">
+              <button
+                type="button"
+                id="closeModal"
+                class="px-4 py-2 bg-gray-200 rounded-lg"
+              >
+                Annuler
+              </button>
+              <button
+                type="submit"
+                class="px-4 py-2 bg-blue-600 text-white rounded-lg"
+              >
+                Enregistrer
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+    <script src="employes.js"></script>
   </body>
 </html>

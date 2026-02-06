@@ -1,69 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>Menu e-Social</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <title>Menu e-worker</title>
     <style>
-        /* Ajout d'une police plus proche du design si besoin */
-        body { font-family: 'Segoe UI', sans-serif; }
+      body {
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      .nav-link.active {
+        background-color: #2563eb !important; 
+        color: white !important;
+        box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.5);
+      }
     </style>
-</head>
-<body class="bg-gray-100">
+  </head>
+  <body class="bg-gray-100">
+    <div
+      class="fixed left-0 top-0 w-64 h-screen bg-[#0f172a] text-slate-400 p-4 flex flex-col"
+    >
+      <h2
+        class="text-3xl text-center font-bold p-4 border-b border-gray-700 mb-4 text-white"
+      >
+        e-worker
+      </h2>
 
-    <div class="fixed left-0 top-0 w-64 h-screen bg-[#0f172a] text-slate-400 p-4 flex flex-col">
-        <h2 class="text-3xl text-center font-bold p-4 border-b border-gray-700">e-worker </h2>
+      <ul class="space-y-2 font-medium" id="sidebar-nav">
+        <li>
+          <a
+            href="#"
+            class="nav-link flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors"
+          >
+            <i class="fa-solid fa-chart-pie w-5 text-center"></i>
+            <span>Tableau de bord</span>
+          </a>
+        </li>
 
-        <ul class="space-y-2 font-medium">
-            
-            <li>
-                <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors">
-                    <i class="fa-solid fa-chart-pie w-5 text-center"></i>
-                    <span>Tableau de bord</span>
-                </a>
-            </li>
+        <li>
+          <a
+            href="#"
+            class="nav-link flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors"
+          >
+            <i class="fa-solid fa-building w-5 text-center"></i>
+            <span>Employeurs</span>
+          </a>
+        </li>
 
-            <li>
-                <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-900/50">
-                    <i class="fa-solid fa-building w-5 text-center"></i>
-                    <span>Employeurs</span>
-                </a>
-            </li>
+        <li>
+          <a
+            href="#"
+            class="nav-link flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors"
+          >
+            <i class="fa-solid fa-users w-5 text-center"></i>
+            <span>Employés</span>
+          </a>
+        </li>
 
-            <li>
-                <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors">
-                    <i class="fa-solid fa-users w-5 text-center"></i>
-                    <span>Employés</span>
-                </a>
-            </li>
+        <li>
+          <a
+            href="#"
+            class="nav-link flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors"
+          >
+            <i class="fa-solid fa-file-invoice-dollar w-5 text-center"></i>
+            <span>Déclarations</span>
+          </a>
+        </li>
 
-            <li>
-                <a href="./presence/presence.html" class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors">
-                    <i class="fa-solid fa-file-invoice-dollar w-5 text-center"></i>
-                    <span>Déclarations</span>
-                </a>
-            </li>
+        <li>
+          <a
+            href="#"
+            class="nav-link flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors"
+          >
+            <i class="fa-solid fa-clock-rotate-left w-5 text-center"></i>
+            <span>Historique</span>
+          </a>
+        </li>
 
-            <li>
-                <a href="./presence/presence.html" class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors">
-                    <i class="fa-solid fa-clock-rotate-left w-5 text-center"></i>
-                    <span>Historique</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="#" class="flex items-center justify-between px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors group">
-                    <div class="flex items-center gap-4">
-                        <i class="fa-solid fa-triangle-exclamation w-5 text-center"></i>
-                        <span>Anomalies</span>
-                    </div>
-                    <span class="text-sm">0</span>
-                </a>
-            </li>
-
-        </ul>
+        <li>
+          <a
+            href="#"
+            class="nav-link flex items-center justify-between px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors group"
+          >
+            <div class="flex items-center gap-4">
+              <i class="fa-solid fa-triangle-exclamation w-5 text-center"></i>
+              <span>Anomalies</span>
+            </div>
+            <span class="text-sm">0</span>
+          </a>
+        </li>
+      </ul>
     </div>
-    </body>
+
+    <script>
+      const links = document.querySelectorAll(".nav-link");
+
+      links.forEach((link) => {
+        link.addEventListener("click", function (e) {
+          links.forEach((l) => l.classList.remove("active"));
+
+          this.classList.add("active");
+        });
+      });
+    </script>
+  </body>
 </html>
