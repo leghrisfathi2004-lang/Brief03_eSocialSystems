@@ -54,9 +54,11 @@ const secteurs = [
 ];
 
 let employers = JSON.parse(localStorage.getItem("employers")) || [];
+let searchedEmployers = [];
 let count = parseInt(localStorage.getItem("employerId")) || 1;
 let currPage = 1;
 const itemsPerPage = 3;
+let isSearching = false;
 
 const selectElement = document.querySelector("#select");
 
@@ -164,7 +166,8 @@ function deleteEmployer(id) {
     currPage = totalPages;
     pagination.classList.add("hide");
   }
-  showAllEmployers();
+
+  return showAllEmployers();
 }
 
 // update employer
@@ -206,11 +209,17 @@ updateEmpBtn.addEventListener("click", updateEmployer);
 // Pagination Logic
 
 function getTotalPages() {
-  return Math.ceil(employers.length / itemsPerPage);
+  if (isSearching) {
+    return Math.ceil(searchedEmployers.length / itemsPerPage);
+  } else {
+    return Math.ceil(employers.length / itemsPerPage);
+  }
 }
 
 function updatePagination() {
   const totalPages = getTotalPages();
+
+  const arr = isSearching ? searchedEmployers : employers;
 
   page.textContent = currPage;
 
@@ -226,7 +235,7 @@ function updatePagination() {
     nextBtn.classList.remove("disabled");
   }
 
-  if (employers.length === 0 || totalPages <= 1) {
+  if (arr.length === 0 || totalPages <= 1) {
     pagination.classList.add("hide");
   } else {
     pagination.classList.remove("hide");
@@ -236,7 +245,11 @@ function updatePagination() {
 prevBtn.addEventListener("click", () => {
   if (currPage > 1) {
     currPage--;
-    showAllEmployers();
+    if (isSearching) {
+      displaySearchedEmployers(searchedEmployers);
+    } else {
+      showAllEmployers();
+    }
   }
 });
 
@@ -244,9 +257,77 @@ nextBtn.addEventListener("click", () => {
   const totalPages = getTotalPages();
   if (currPage < totalPages) {
     currPage++;
-    showAllEmployers();
+    if (isSearching) {
+      displaySearchedEmployers(searchedEmployers);
+    } else {
+      showAllEmployers();
+    }
   }
 });
+
+// Filter By search
+const searchFilter = document.querySelector("#search-filter");
+
+searchFilter.addEventListener("input", (e) => {
+  message.textContent = "";
+
+  searchedEmployers = employers.filter(
+    (employer) =>
+      employer.raisonSocial
+        .toLowerCase()
+        .includes(e.target.value.toLowerCase()) ||
+      employer.sector.toLowerCase().includes(e.target.value.toLowerCase()),
+  );
+  displaySearchedEmployers(searchedEmployers);
+  isSearching = true;
+  // console.log(searchedEmployers);
+});
+
+function displaySearchedEmployers(searchedEmployers) {
+  tbody.innerHTML = "";
+  message.textContent = "";
+
+  if (!searchedEmployers.length) {
+    message.textContent = "Aucune Employeurs";
+    pagination.classList.add("hide");
+  }
+
+  const startIndex = (currPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  return searchedEmployers
+    .slice(startIndex, endIndex)
+    .forEach((employer, index) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+            <td
+                class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 dark:stroke-slate-800"
+                  >
+                  ${employer.id}  
+            </td>
+            <td
+                class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 dark:stroke-slate-800"
+                  >
+                  ${employer.raisonSocial}  
+            </td>
+            <td
+                class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 dark:stroke-slate-800"
+                  >
+                  ${employer.sector}  
+            </td>
+            <td
+                class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 dark:stroke-slate-800 flex items-center gap-5"
+                >
+                <i class="fa-solid fa-user-pen cursor-pointer" onclick="editEmployer(${employer.id})"></i> 
+                  <i class="fa-solid fa-trash cursor-pointer" onclick="deleteEmployer(${index})"></i>
+                  </td>
+        `;
+
+      tbody.appendChild(tr);
+      pagination.classList.remove("hide");
+      updatePagination();
+    });
+}
 
 // display/hide form
 newEmpBtn.addEventListener("click", () => {
@@ -262,12 +343,25 @@ closeOverlay2.addEventListener("click", () => {
   overlay.classList.add("hide");
 });
 
+// Dark Mode
 tailwind.config = {
   darkMode: "class",
 };
 
+const darkMode = localStorage.getItem("darkMode");
+
+window.addEventListener("DOMContentLoaded", () => {
+  const darkMode = localStorage.getItem("darkMode");
+
+  if (darkMode === "enabled") {
+    document.documentElement.classList.add("dark");
+  }
+});
 const darkBtn = document.querySelector("#dark-btn");
 darkBtn.addEventListener("click", () => {
-  console.log(document.documentElement.classList);
   document.documentElement.classList.toggle("dark");
+  const isDark = document.documentElement.classList.contains("dark");
+  localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+  console.log(isDark);
+  console.log(darkMode);
 });
