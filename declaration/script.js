@@ -1,16 +1,14 @@
 // ===================== DATA =====================
-const employeurs = [
-  { id: 1, wh: "TechNova SARL", secteur: "Informatique" },
-  { id: 2, wh: "Atlas Food", secteur: "Agroalimentaire" },
-  { id: 3, wh: "Blue Transport", secteur: "Logistique" }
-];
 
-const assures = [
-  { id: 101, nom: "Ahmed El Amrani", salaireMensuel: 3000, employeurId: 1 },
-  { id: 102, nom: "Sara Benali", salaireMensuel: 4500, employeurId: 1 },
-  { id: 103, nom: "Youssef Karim", salaireMensuel: 2800, employeurId: 2 },
-  { id: 104, nom: "Imane Zahra", salaireMensuel: 5200, employeurId: 3 }
-];
+let employeurs = JSON.parse(localStorage.getItem("employers") || []);
+let assures=JSON.parse(localStorage.getItem("employees")||[])
+console.log(employeurs)
+// const assures = [
+//   { id: 101, nom: "Ahmed El Amrani", salaireMensuel: 3000, employeurId: 1 },
+//   { id: 102, nom: "Sara Benali", salaireMensuel: 4500, employeurId: 1 },
+//   { id: 103, nom: "Youssef Karim", salaireMensuel: 2800, employeurId: 2 },
+//   { id: 104, nom: "Imane Zahra", salaireMensuel: 5200, employeurId: 3 },
+// ];
 const form = document.getElementById("declarationForm");
 const employeurSelect = document.getElementById("employeurSelect");
 const moisInput = document.getElementById("moisSelect");
@@ -40,10 +38,10 @@ let declarations = getDeclarations();
 
 // ===================== UI =====================
 function fillEmployeurDropdown() {
-  employeurs.forEach(emp => {
+  employeurs.forEach((emp) => {
     const option = document.createElement("option");
     option.value = emp.id;
-    option.textContent = emp.wh;
+    option.textContent = emp.raisonSocial;
     employeurSelect.appendChild(option);
   });
 }
@@ -66,9 +64,8 @@ function renderResult(result) {
   `;
 }
 
-
 function getAssuresByEmployeur(employeurId) {
-  return assures.filter(a => a.employeurId === employeurId);
+  return assures.filter((a) => a.employeurId === employeurId);
 }
 
 function validateDeclarationInputs({ employeurId, mois, annee }) {
@@ -79,27 +76,27 @@ function validateDeclarationInputs({ employeurId, mois, annee }) {
 }
 
 function declarationExists(employeurId, mois, annee) {
-  return declarations.some(d =>
-    d.employeurId === employeurId &&
-    d.mois === mois &&
-    d.annee === annee
+  return declarations.some(
+    (d) =>
+      d.employeurId === employeurId && d.mois === mois && d.annee === annee,
   );
 }
 
 function calculateCotisationForAssure(assure) {
+  console.log(assure)
   const PLAFOND = 6000;
   const TAUX_SALARIAL = 0.04;
   const TAUX_PATRONAL = 0.06;
 
-  const base = Math.min(assure.salaireMensuel, PLAFOND);
+  const base = Math.min(Number(assure.salary), PLAFOND);
 
   return {
     assureId: assure.id,
-    nom: assure.nom,
+    name: assure.name,
     salaireDeclare: base,
     cotisationSalariale: base * TAUX_SALARIAL,
     cotisationPatronale: base * TAUX_PATRONAL,
-    totalCotisation: base * (TAUX_SALARIAL + TAUX_PATRONAL)
+    totalCotisation: base * (TAUX_SALARIAL + TAUX_PATRONAL),
   };
 }
 
@@ -108,22 +105,26 @@ function calculateTotalCotisations(cotisations) {
 }
 
 function getDeclarationDeadline(mois, annee) {
-  return new Date(annee, mois - 1, 15); 
+  return new Date(annee, mois - 1, 15);
 }
 
 function calculateDelayInMonths(declarationDate, mois, annee) {
   const deadline = getDeclarationDeadline(mois, annee);
   if (declarationDate <= deadline) return 0;
 
-  const diffDays = Math.ceil((declarationDate - deadline) / (1000 * 60 * 60 * 24));
+  const diffDays = Math.ceil(
+    (declarationDate - deadline) / (1000 * 60 * 60 * 24),
+  );
   return Math.ceil(diffDays / 30);
 }
 
 function calculatePenalty(total, delayMonths) {
+  console.log(total,delayMonths)
   return total * 0.01 * delayMonths;
 }
 
 function processDeclaration({ employeurId, mois, annee, declarationDate }) {
+  console.log(employeurId,mois,annee,declarationDate)
   const assuresList = getAssuresByEmployeur(employeurId);
   if (!assuresList.length) throw new Error("Aucun assuré pour cet employeur");
 
@@ -137,11 +138,11 @@ function processDeclaration({ employeurId, mois, annee, declarationDate }) {
     totalCotisations,
     delayMonths,
     penalty,
-    totalFinal: totalCotisations + penalty
+    totalFinal: totalCotisations + penalty,
   };
 }
 
-form.addEventListener("submit", e => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
   errorBox.classList.add("hidden");
   resultBox.classList.add("hidden");
@@ -152,7 +153,7 @@ form.addEventListener("submit", e => {
     annee: Number(anneeInput.value),
     declarationDate: declarationDateInput.value
       ? new Date(declarationDateInput.value)
-      : new Date()
+      : new Date(),
   };
 
   const error = validateDeclarationInputs(inputs);
@@ -164,22 +165,21 @@ form.addEventListener("submit", e => {
 
   try {
     const result = processDeclaration(inputs);
-    const employeur = employeurs.find(e => e.id === inputs.employeurId);
+    const employeur = employeurs.find((e) => e.id === inputs.employeurId);
 
     declarations.push({
       id: Date.now(),
       employeurId: inputs.employeurId,
-      employeurName: employeur.wh,
+      employeurName: employeur.raisonSocial,
       mois: inputs.mois,
       annee: inputs.annee,
       dateDepot: inputs.declarationDate.toISOString(),
       createdAt: new Date().toISOString(),
-      ...result
+      ...result,
     });
 
     saveDeclarations(declarations);
     renderResult(result);
-
   } catch (err) {
     showError(err.message);
   }
