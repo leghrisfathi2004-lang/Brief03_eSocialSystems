@@ -77,6 +77,19 @@ secteurs.forEach((secteur) => {
   selectElement2.appendChild(option);
 });
 
+function showToast(message, color, time) {
+  let msg = document.getElementById("toast");
+  msg.textContent = message;
+  setTimeout(() => {
+    msg.classList.remove("-translate-x-full", "opacity-0");
+    msg.classList.add("translate-x-0", "opacity-100", `bg-${color}-500/90`);
+  });
+  setTimeout(() => {
+    msg.classList.remove("translate-x-0", "opacity-100");
+    msg.classList.add("-translate-x-full", "opacity-0", `bg-${color}-500/90`);
+  }, time);
+}
+
 // add new employer
 function addNewEmployer(e) {
   e.preventDefault();
@@ -89,7 +102,6 @@ function addNewEmployer(e) {
     id: count++,
     raisonSocial: raisonSocial.value,
     sector: selectElement.value,
-    employees: [],
   };
 
   employers.push(newEmployer);
@@ -98,6 +110,10 @@ function addNewEmployer(e) {
   error.classList.add("hide");
   clearInputs();
   showAllEmployers();
+  showToast("Employeur ajouter avec succee", "green", 3000);
+  form.classList.add("hide");
+  overlay.classList.add("hide");
+
   // localStorage.clear();
 }
 
@@ -161,13 +177,14 @@ function deleteEmployer(id) {
 
   localStorage.setItem("employers", JSON.stringify(employers));
 
-  const totalPages = getTotalPages();
+  const totalPages = Math.ceil(employers.length / itemsPerPage);
   if (currPage > totalPages && totalPages > 0) {
     currPage = totalPages;
     pagination.classList.add("hide");
   }
 
-  return showAllEmployers();
+  showAllEmployers();
+  showToast("Employeur suprimer avec succee", "green", 1000);
 }
 
 // update employer
@@ -204,6 +221,9 @@ function updateEmployer(e) {
   raisonSocial2.value = "";
   selectElement2.value = "";
   showAllEmployers();
+  showToast("Employeur modifier avec succee", "green", 3000);
+  updateForm.classList.add("hide");
+  overlay.classList.add("hide");
 }
 updateEmpBtn.addEventListener("click", updateEmployer);
 // Pagination Logic
