@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <title>Menu e-Social</title>
+    <style type="text/tailwindcss">
+      :root {
+        /* Primary Colors */
+        --color-light: #f1f5f9;
+        --color-primary: #3b82f6;
+        --color-primary-dark: #2563eb;
+        --color-primary-light: #60a5fa;
+
+        /* Dark Theme Colors */
+        --color-dark-bg: #0f172a;
+        --color-dark-surface: #1e293b;
+        --color-dark-hover: #334155;
+
+        /* Text Colors */
+        --color-text-primary: #f8fafc;
+        --color-text-secondary: #cbd5e1;
+        --color-text-muted: #94a3b8;
+
+        /* Accent Colors */
+        --color-accent-blue: #3b82f6;
+        --color-accent-success: #10b981;
+        --color-accent-warning: #f59e0b;
+        --color-accent-danger: #ef4444;
+
+        /* Border Colors */
+        --color-border: #374151;
+        --color-border-light: #4b5563;
+      }
+
+      @theme {
+        --color-primary-600: var(--color-primary);
+        --color-primary-700: var(--color-primary-dark);
+        --color-primary-500: var(--color-primary-light);
+
+        --color-dark-900: var(--color-dark-bg);
+        --color-dark-800: var(--color-dark-surface);
+        --color-dark-700: var(--color-dark-hover);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 dark:bg-slate-800 flex">
+    <div
+      class="fixed left-0 top-0 w-64 h-screen bg-slate-50 dark:bg-[var(--color-dark-bg)] text-gray-700 dark:text-slate-400 p-4 flex flex-col"
+    >
+      <h2
+        class="text-3xl text-center font-bold p-4 border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white"
+      >
+        e-worker
+      </h2>
+
+      <ul class="space-y-2 font-medium">
+        <li>
+          <a
+            href="#"
+            class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-700 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors"
+          >
+            <i class="fa-solid fa-chart-pie w-5 text-center"></i>
+            <span>Tableau de bord</span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="../employeur.html"
+            class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-700 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors"
+          >
+            <i class="fa-solid fa-building w-5 text-center"></i>
+            <span>Employeurs</span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="#"
+            class="flex items-center gap-4 px-4 py-3 rounded-xl bg-[var(--color-primary)] text-white shadow-lg shadow-blue-900/50"
+          >
+            <i class="fa-solid fa-users w-5 text-center"></i>
+            <span>Employés</span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="./presence/presence.html"
+            class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-700 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors"
+          >
+            <i class="fa-solid fa-file-invoice-dollar w-5 text-center"></i>
+            <span>Déclarations</span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="./presence/presence.html"
+            class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-700 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors"
+          >
+            <i class="fa-solid fa-clock-rotate-left w-5 text-center"></i>
+            <span>Historique</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="ml-64 p-8 w-full">
+      <div class="flex justify-between items-center px-8 w-full">
+        <div>
+          <h1 class="text-2xl font-semibold text-slate-300">Employés</h1>
+          <!-- <hr class="w-[89rem] border-gray-300 my-4" /> -->
+          <p class="text-slate-400 py-4">Gestion de suivi des employés</p>
+        </div>
+        <i
+          id="dark-btn"
+          class="fa-regular fa-sun dark:text-slate-200 text-xl cursor-pointer"
+        ></i>
+      </div>
+      <!-- recherch -->
+      <div class="flex gap-4 mt-6">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Rechercher par nom ou ID"
+          class="border dark:bg-slate-800 dark:text-slate-100 rounded-lg px-4 py-2 w-72 outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        <select
+          class="border rounded-lg dark:bg-slate-800 dark:text-slate-100 px-4 py-2 w-60 outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          <option>Tous les employeurs</option>
+        </select>
+        <button
+          id="openModal"
+          class="bg-blue-600 text-white px-6 py-3 rounded-xl shadow-lg hover:bg-blue-700"
+        >
+          Nouvel Employé
+        </button>
+      </div>
+
+      <div class="bg-white dark:bg-slate-800 rounded-xl mt-5 p-6 shadow-sm">
+        <table class="w-full text-left">
+          <thead class="bg-gray-100 text-slate-500 dark:bg-slate-900">
+            <tr>
+              <th class="p-4">ID EMPLOYE</th>
+              <th class="p-4">NOM COMPLET</th>
+              <th class="p-4">EMPLOYEUR</th>
+              <th class="p-4">SALAIRE MENSUEL</th>
+            </tr>
+          </thead>
+
+          <tbody id="employeesTable" class="text-slate-600"></tbody>
+        </table>
+      </div>
+
+      <div
+        id="employeeModal"
+        class="fixed inset-0 bg-black/40 hidden items-center justify-center"
+      >
+        <div
+          class="bg-white rounded-xl p-6 w-[400px] shadow-lg dark:bg-slate-800 dark:text-slate-100"
+        >
+          <h2 class="text-xl font-semibold mb-4">Ajouter un employé</h2>
+
+          <form id="employeeForm" class="space-y-3">
+            <input
+              id="name"
+              type="text"
+              placeholder="Nom complet"
+              class="w-full border p-2 rounded-lg dark:bg-slate-800 dark:text-slate-100 border-2 border-blue-500 outline-none"
+              required
+            />
+            <select
+              id="company"
+              class="w-full border p-2 rounded-lg dark:bg-slate-800 dark:text-slate-100 border-2 border-blue-500 outline-none"
+              required
+            >
+              <option value="all">Choisir un employeur</option>
+            </select>
+            <input
+              id="salary"
+              type="number"
+              placeholder="Salaire"
+              class="w-full border p-2 rounded-lg dark:bg-slate-800 dark:text-slate-100 border-2 border-blue-500 outline-none"
+              required
+            />
+
+            <div class="flex justify-end gap-2 mt-4">
+              <button
+                type="button"
+                id="closeModal"
+                class="px-4 py-2 bg-gray-200 rounded-lg dark:bg-slate-900"
+              >
+                Annuler
+              </button>
+              <button
+                type="submit"
+                class="px-4 py-2 bg-blue-600 text-white rounded-lg"
+              >
+                Enregistrer
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="employes.js"></script>
+  </body>
+</html>
