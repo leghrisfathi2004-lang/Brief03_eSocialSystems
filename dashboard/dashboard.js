@@ -6,7 +6,7 @@ function the_switcher() {
   const ctx = document.querySelector(".mychart").getContext("2d");
 
   const cotisationsData = [
-    {id:1770628012839, employeurId:2, mois:5, annee:2025, totalCotisations:280},
+    {id:1770628012839, employeurId:2, mois:1, annee:2025, totalCotisations:280},
     {id:1770628220670, employeurId:1, mois:5, annee:2025, totalCotisations:750},
     {id:1770628289588, employeurId:1, mois:4, annee:2026, totalCotisations:750},
     {id:1770628356903, employeurId:2, mois:6, annee:2025, totalCotisations:280}
