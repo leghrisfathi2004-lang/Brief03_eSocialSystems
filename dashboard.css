@@ -1,0 +1,298 @@
+     :root {
+        /* Primary Colors / */
+        --color-primary: #3b82f6;
+        --color-primary-dark: #2563eb;
+        --color-primary-light: #60a5fa;
+
+        /* / Dark Theme Colors / */
+        --color-dark-bg: #0f172a;
+        --color-dark-surface: #1e293b;
+        --color-dark-hover: #334155;
+
+        /* / Text Colors / */
+        --color-text-primary: #f8fafc;
+        --color-text-secondary: #cbd5e1;
+        --color-text-muted: #94a3b8;
+
+        /* / Accent Colors / */
+        --color-accent-blue: #3b82f6;
+        --color-accent-success: #10b981;
+        --color-accent-warning: #f59e0b;
+        --color-accent-danger: #ef4444; 
+
+        /* Border Colors  */
+        --color-border: #374151;
+        --color-border-light:#4b5563;
+      }
+
+      @theme {
+        color-primary-600: var(--color-primary);
+        color-primary-700: var(--color-primary-dark);
+        color-primary-500: var(--color-primary-light);
+
+        color-dark-900: var(--color-dark-bg);
+        color-dark-800: var(--color-dark-surface);
+        color-dark-700: var(--color-dark-hover);
+      }
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* Sidebar Navigation Styles */
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #94a3b8;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .nav-item:hover {
+      background-color: #1e293b;
+      color: #fff;
+    }
+
+    .nav-item.active {
+      background-color: #4f46e5;
+      color: #fff;
+    }
+
+    .nav-item svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Card Styles */
+    .stat-card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    /* Badge de croissance */
+    .growth-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      background-color: #d1fae5;
+      color: #059669;
+    }
+
+    /* Rappel réglementaire */
+    .reminder-card {
+      /* background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%); */
+      background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+      border-radius: 16px;
+      padding: 24px;
+      color: white;
+      box-shadow: 0 4px 16px rgba(79, 70, 229, 0.3);
+    }
+
+    .reminder-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .reminder-card p {
+      font-size: 13px;
+      line-height: 1.6;
+      opacity: 0.95;
+      margin-bottom: 16px;
+    }
+
+    .reminder-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .reminder-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      margin-bottom: 8px;
+      opacity: 0.95;
+    }
+
+    .reminder-list li::before {
+      content: "✓";
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    /* Employers List */
+    .employer-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .employer-item:last-child {
+      border-bottom: none;
+    }
+
+    .employer-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+      color: #64748b;
+      flex-shrink: 0;
+    }
+
+    .employer-info {
+      flex: 1;
+    }
+
+    .employer-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1e293b;
+      margin-bottom: 2px;
+    }
+
+    .employer-type {
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    /* Chart placeholder */
+    .chart-container {
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to top, #f8fafc 0%, #ffffff 100%);
+      border-radius: 12px;
+      border: 1px dashed #e2e8f0;
+      position: relative;
+    }
+
+    .chart-axis {
+      position: absolute;
+      color: #94a3b8;
+      font-size: 11px;
+    }
+
+    .chart-axis-y {
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .chart-axis-x {
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 60px;
+    }
+
+    /* Profile section */
+    .profile-section {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: #1e293b;
+      border-radius: 12px;
+    }
+
+    .profile-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .profile-info h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 2px;
+    } 
+
+    .profile-info p {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    /* Anomalies badge */
+    .anomalies-count {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: #ef4444;
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 10px;
+      min-width: 18px;
+      text-align: center;
+    }
+ 
