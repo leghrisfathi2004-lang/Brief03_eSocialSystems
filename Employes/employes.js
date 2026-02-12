@@ -86,14 +86,7 @@ searchInput.addEventListener("keyup", () => {
     renderEmployees(filtered);
   });
 
-  tailwind.config = {
-  darkMode: "class",
-};
 
-const darkBtn = document.querySelector("#dark-btn");
-darkBtn.addEventListener("click", () => {
-  document.documentElement.classList.toggle("dark");
-});
 
 
 function loadEmployers() {

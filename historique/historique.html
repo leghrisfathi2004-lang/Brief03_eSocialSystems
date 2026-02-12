@@ -1,140 +1,175 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style type="text/tailwindcss">
-      :root {
-        /* Primary Colors */
-        --color-primary: #3b82f6;
-        --color-primary-dark: #2563eb;
-        --color-primary-light: #60a5fa;
+<html lang="en" class="dark">
 
-        /* Dark Theme Colors */
-        --color-dark-bg: #0f172a;
-        --color-dark-surface: #1e293b;
-        --color-dark-hover: #334155;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    :root {
+      --color-primary: #2563eb; 
+      --color-dark-bg: #0f172a;      
+      --color-dark-surface: #1e293b; 
+      --color-border: #334155;          /* slate-700 pour les bordures */
+      --color-text-secondary: #94a3b8;  /* slate-400 pour les titres et sous-titres */
+      --color-dark-hover: #1e293b;     /* slate-800 pour le fond du body et footer */
+      --color-blue-accent: #60a5fa;
+    }
+    .dark {
+      color: #f1f5f9; 
+    }
 
-        /* Text Colors */
-        --color-text-primary: #f8fafc;
-        --color-text-secondary: #cbd5e1;
-        --color-text-muted: #94a3b8;
 
-        /* Accent Colors */
-        --color-accent-blue: #3b82f6;
-        --color-accent-success: #10b981;
-        --color-accent-warning: #f59e0b;
-        --color-accent-danger: #ef4444;
+    /*dark mode for sidebar*/
+    .dark #sidebar,
+    .dark #title,
+    .dark #title i {
+      background-color: #1e293b;
+      color: #f1f5f9;
+    }
+    .dark #sidebar h1 {
+      color: #ffffff;
+      border-bottom-color: #374151;
+    }
+    .dark #sidebar a {
+      color: #94a3b8;
+    }
+    .dark #sidebar a:hover {
+      color: #ffffff;
+      background-color: #1e293b;
+    }
+    .dark #sidebar a.active,
+    .dark #sidebar a[class*="bg-[var(--color-primary)]"] {
+      background-color: #3b82f6;
+      color: #ffffff;
+      box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.5);
+    }
 
-        /* Border Colors */
-        --color-border: #374151;
-        --color-border-light: #4b5563;
-      }
+    .dark main {
+      background: linear-gradient(to bottom right, #0f172a, #1e293b);
+      color: #f1f5f9;
+    }
 
-      @theme {
-        --color-primary-600: var(--color-primary);
-        --color-primary-700: var(--color-primary-dark);
-        --color-primary-500: var(--color-primary-light);
+    .dark #histo,
+    .dark #histo h1 {
+      background-color: #1e293b;
+      color: white;
+    }
 
-        --color-dark-900: var(--color-dark-bg);
-        --color-dark-800: var(--color-dark-surface);
-        --color-dark-700: var(--color-dark-hover);
-      }
+    .dark .text-gray-700 {
+      color: #94a3b8 !; 
+    }
+
+    .dark .border-gray-300 {
+      border-color: #334155 !; 
+    }
+
+    .dark .text-gray-900 {
+      color: #ffffff ;
+    }
+
+    .dark table thead {
+      background-color: #0f172a;
+      color: var(--color-text-secondary);
+      border-color: var(--color-border);
+    }
+
+    .dark table tbody {
+      background-color: var(--color-dark-hover);
+      color: var(--color-text-secondary);
+    }
+
+    .dark table tfoot {
+      background-color: var(--color-dark-hover);
+      border-color: var(--color-border);
+      color: #f1f5f9; 
+    }
+
+    
+    .dark .text-blue-600, 
+    .dark .text-blue-700 {
+      color: var(--color-blue-accent) !;
+    }
+
+    .dark .divide-slate-100, 
+    .dark .border-slate-200 {
+      border-color: var(--color-border) !;
+    }
     </style>
-    <title>HISTORIQUE</title>
-  </head>
+  <title>HISTORIQUE</title>
+</head>
 
-  <body class="max-w-screen max-h-screen">
-    <!--sidebaaar-->
-    <div
-      class="fixed left-0 top-0 w-64 h-screen bg-[#0f172a] text-slate-400 p-4 flex flex-col"
-    >
-      <h2 class="text-3xl text-center font-bold p-4 border-b border-gray-700">
-        e-worker
-      </h2>
+<body class="w-screen h-screen flex relative">
+  <!--sidebaaar-->
+  <div id="sidebar" class="w-64 h-screen bg-white text-gray-700 p-4 flex flex-col">
+    <h2 class="text-3xl text-center font-bold p-4 border-b border-gray-300 text-gray-900">
+      e-worker
+    </h2>
 
-      <ul class="space-y-2 font-medium">
-        <li>
-          <a
-            href="#"
-            class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors"
-          >
-            <i class="fa-solid fa-chart-pie w-5 text-center"></i>
-            <span>Tableau de bord</span>
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-            class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors"
-          >
-            <i class="fa-solid fa-building w-5 text-center"></i>
-            <span>Employeurs</span>
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-            class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors"
-          >
-            <i class="fa-solid fa-users w-5 text-center"></i>
-            <span>Employés</span>
-          </a>
-        </li>
-        <li>
-          <a
-            href="./presence/presence.html"
-            class="flex items-center gap-4 px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors"
-          >
-            <i class="fa-solid fa-file-invoice-dollar w-5 text-center"></i>
-            <span>Déclarations</span>
-          </a>
-        </li>
-        <li>
-          <a
-            href="./presence/presence.html"
-            class="flex items-center gap-4 px-4 py-3 rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-900/50"
-          >
-            <i class="fa-solid fa-clock-rotate-left w-5 text-center"></i>
-            <span>Historique</span>
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-            class="flex items-center justify-between px-4 py-3 rounded-xl hover:text-white hover:bg-slate-800 transition-colors group"
-          >
-            <div class="flex items-center gap-4">
-              <i class="fa-solid fa-triangle-exclamation w-5 text-center"></i>
-              <span>Anomalies</span>
-            </div>
-            <span class="text-sm">0</span>
-          </a>
-        </li>
-      </ul>
+    <ul class="space-y-2 font-medium">
+      <li>
+        <a href="../dashboard/dashboard.html"
+          class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-700 hover:text-gray-900 hover:bg-gray-200 transition-colors">
+          <i class="fa-solid fa-chart-pie w-5 text-center"></i>
+          <span>Tableau de bord</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="../employeurs/employeur.html"
+          class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-700 hover:text-gray-900 hover:bg-gray-200 transition-colors">
+          <i class="fa-solid fa-building w-5 text-center"></i>
+          <span>Employeurs</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="../Employes/employes.html"
+          class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-700 hover:text-gray-900 hover:bg-gray-200 transition-colors">
+          <i class="fa-solid fa-users w-5 text-center"></i>
+          <span>Employés</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="../declaration/index.html"
+          class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-700 hover:text-gray-900 hover:bg-gray-200 transition-colors">
+          <i class="fa-solid fa-file-invoice-dollar w-5 text-center"></i>
+          <span>Déclarations</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="../historique/historique.html"
+          class="flex items-center gap-4 px-4 py-3 rounded-xl bg-[var(--color-primary)] text-white shadow-lg shadow-blue-900/50">
+          <i class="fa-solid fa-clock-rotate-left w-5 text-center"></i>
+          <span>Historique</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <main
+    class=" p-8 flex flex-col gap-10 bg-gradient-to-br from-slate-50 to-slate-100 justify-center overflow-y-scroll w-full">
+    <div id="title" class="flex justify-between rounded-xl w-full ">
+      <div class="w-[65%] font-extrabold text-2xl p-4 ">
+        HISTORIQUE
+      </div>
+
+      <div class="w-[30%] flex items-center justify-end gap-8">
+        <i id="btn" class="fa-regular fa-sun cursor-pointer text-slate-900 "></i>
+        <input type="month" id="filterDate" class="border-1 p-4 right-0 rounded-xl">
+      </div>
     </div>
 
+    <div id="historique" class="w-full h-120 flex flex-col items-center gap-4">
+      <!--the content goes heeere---->
+    </div>
+  </main>
 
-    <main class="ml-64 p-8 flex flex-col gap-10 justify-center">
-        <div class="flex justify-between ">
-            <div class="w-[65%] font-extrabold text-2xl p-4">
-                HISTORIQUE
-            </div>
-            <div class="w-[30%]">
-                <input type="month" id="filterDate" class="border-y-2 p-4 right-0 rounded-lg">
-            </div>
-        </div>
-        <div id="historique" class="w-full h-120 flex flex-col items-center gap-4">
-            <!--the content goes heeere---->
-        </div>
-    </main>
-
-<script src="historiqueScript.js"></script>
+  <script src="historiqueScript.js"></script>
+  <script src="/darkMode.js"></script>
 </body>
 
 </html>

@@ -115,3 +115,19 @@ function prepareYearlyData(cotisationsData) {
   
   return yearlyData;
 }
+
+//finalisation ----------------------------------
+document.addEventListener('DOMContentLoaded', ()=>{
+  let tc = document.getElementById('totalCollecte');
+  let sm = document.getElementById('SalaireM');
+  let tab = JSON.parse(localStorage.getItem('esocial_declarations'));
+  let total = tab.reduce((sum, cur) => sum + cur.totalFinal, 0);
+  tc.textContent = total;
+  let salires = 0;
+  let count = 0;
+  tab.forEach(el =>{
+    salires = el.cotisations.reduce((sum, cur) => sum + cur.salaireDeclare, 0);
+    count+= el.cotisations.length;
+  });
+  sm.textContent = Math.floor(salires/count);
+});

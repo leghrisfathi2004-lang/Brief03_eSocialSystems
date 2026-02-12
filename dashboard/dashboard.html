@@ -9,214 +9,161 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="dashboard.css">
 
-<body class="bg-slate-50">
+<body class="w-screen h-screen bg-gray-100 dark:bg-slate-800 flex relative">
+  <!-- Sidebar -->
+  <div
+    class=" h-screen bg-white dark:bg-slate-800 text-gray-700 dark:text-slate-400 p-4 flex flex-col">
+    <h2
+      class="text-3xl text-center font-bold p-4 border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white">
+      e-worker
+    </h2>
 
-  <div class="flex min-h-screen">
+    <ul class="space-y-2 font-medium">
+      <li>
+        <a href="../dashboard/dashboard.html"
+          class="flex items-center gap-4 px-4 py-3 rounded-xl bg-[var(--color-primary)] text-white shadow-lg shadow-blue-900/50">
+          <i class="fa-solid fa-chart-pie w-5 text-center"></i>
+          <span>Tableau de bord</span>
+        </a>
+      </li>
 
-    <!-- Sidebar -->
-    <div
-      class="z-64 h-screen bg-[var(--color-light)] dark:bg-[var(--color-dark-bg)] text-gray-700 dark:text-slate-400 p-4 flex flex-col">
-      <h2
-        class="text-3xl text-center font-bold p-4 border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white">
-        e-worker
-      </h2>
+      <li>
+        <a href="../employeurs/employeur.html"
+          class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-700 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors">
+          <i class="fa-solid fa-building w-5 text-center"></i>
+          <span>Employeurs</span>
+        </a>
+      </li>
 
-      <ul class="space-y-2 font-medium">
-        <li>
-          <a href="./dashboard.html"
-            class="flex items-center gap-4 px-4 py-3 rounded-xl bg-[var(--color-primary)] text-white shadow-lg shadow-blue-900/50">
-            <i class="fa-solid fa-chart-pie w-5 text-center"></i>
-            <span>Tableau de bord</span>
-          </a>
-        </li>
+      <li>
+        <a href="../Employes/employes.html"
+          class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-700 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors">
+          <i class="fa-solid fa-users w-5 text-center"></i>
+          <span>Employés</span>
+        </a>
+      </li>
 
-        <li>
-          <a href="../employeurs/employeur.html"
-            class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-700 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors">
-            <i class="fa-solid fa-building w-5 text-center"></i>
-            <span>Employeurs</span>
-          </a>
-        </li>
+      <li>
+        <a href="../declaration/index.html"
+          class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-700 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors">
+          <i class="fa-solid fa-file-invoice-dollar w-5 text-center"></i>
+          <span>Déclarations</span>
+        </a>
+      </li>
 
-        <li>
-          <a href="../Employes/employes.html"
-            class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-700 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors">
-            <i class="fa-solid fa-users w-5 text-center"></i>
-            <span>Employés</span>
-          </a>
-        </li>
+      <li>
+        <a href="../historique/historique.html"
+          class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-700 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors">
+          <i class="fa-solid fa-clock-rotate-left w-5 text-center"></i>
+          <span>Historique</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- Main Content -->
+   <main class="flex-1 p-6 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-[var(--color-dark-bg)] dark:to-[var(--color-dark-surface)] overflow-y-scroll min-h-screen">
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-2xl font-semibold text-slate-800 dark:text-[var(--color-text-primary)]">Tableau de bord</h1>
+      <div class="flex items-center gap-4">
+        <button class="p-2 hover:bg-white dark:hover:bg-[var(--color-dark-hover)] rounded-lg transition">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-5 h-5 text-slate-600 dark:text-[var(--color-text-secondary)]">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+          </svg>
+        </button>
+             <i id="dark-btn" class="fa-regular fa-sun cursor-pointer text-slate-900 dark:text-slate-100"></i>
 
-        <li>
-          <a href="../declaration/index.html"
-            class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-700 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors">
-            <i class="fa-solid fa-file-invoice-dollar w-5 text-center"></i>
-            <span>Déclarations</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="../historique/"
-            class="flex items-center gap-4 px-4 py-3 rounded-xl text-gray-700 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors">
-            <i class="fa-solid fa-clock-rotate-left w-5 text-center"></i>
-            <span>Historique</span>
-          </a>
-        </li>
-      </ul>
+      </div>
     </div>
 
-    <!-- Main Content -->
-    <main class="flex-1 p-6 bg-gradient-to-br from-slate-50 to-slate-100">
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 justify-center gap-5 mb-6">
 
-      <!-- Header -->
-      <div class="flex justify-between items-center mb-6">
-        <h1 class="text-2xl font-semibold text-slate-800">Tableau de bord</h1>
-        <div class="flex items-center gap-4">
-          <button class="p-2 hover:bg-white rounded-lg transition">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="w-5 h-5 text-slate-600">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-            </svg>
-
-          </button>
-          <button class="p-2 hover:bg-white rounded-lg transition">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="w-5 h-5 text-slate-600">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Stats Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 justify-center gap-5 mb-6">
-
-        <!-- Total Collecté -->
-        <div class="stat-card">
-          <div class="flex gap-4">
-            <div class="icon-box" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"
-                style="color: #2563eb;">
-                <path d="M12 7.5a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z" />
-                <path fill-rule="evenodd"
-                  d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 14.625v-9.75zM8.25 9.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM18.75 9a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V9.75a.75.75 0 00-.75-.75h-.008zM4.5 9.75A.75.75 0 015.25 9h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H5.25a.75.75 0 01-.75-.75V9.75z"
-                  clip-rule="evenodd" />
-                <path
-                  d="M2.25 18a.75.75 0 000 1.5c5.4 0 10.63.722 15.6 2.075 1.19.324 2.4-.558 2.4-1.82V18.75a.75.75 0 00-.75-.75H2.25z" />
-              </svg>
-            </div>
-            <div class="flex items-center justify-between mb-1">
-              </span>
-            </div>
-          </div>
-          <h3 class="text-sm text-slate-500 font-medium">Total Collecté</h3>
-          <p class="text-3xl font-bold text-slate-800">0 MAD</p>
-        </div>
-
-        <!-- Salaire Moyen -->
-        <div class="stat-card">
-          <div class="icon-box" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);">
+      <!-- Total Collecté -->
+      <div class="stat-card dark:bg-[var(--color-dark-surface)] dark:border dark:border-[var(--color-border)]">
+        <div class="flex gap-4">
+          <div class="icon-box" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"
-              style="color: #059669;">
+              style="color: #2563eb;">
+              <path d="M12 7.5a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z" />
               <path fill-rule="evenodd"
-                d="M7.5 5.25a3 3 0 013-3h3a3 3 0 013 3v.205c.933.085 1.857.197 2.774.334 1.454.218 2.476 1.483 2.476 2.917v3.033c0 1.211-.734 2.352-1.936 2.752A24.726 24.726 0 0112 15.75c-2.73 0-5.357-.442-7.814-1.259-1.202-.4-1.936-1.541-1.936-2.752V8.706c0-1.434 1.022-2.7 2.476-2.917A48.814 48.814 0 017.5 5.455V5.25zm7.5 0v.09a49.488 49.488 0 00-6 0v-.09a1.5 1.5 0 011.5-1.5h3a1.5 1.5 0 011.5 1.5zm-3 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 14.625v-9.75zM8.25 9.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM18.75 9a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V9.75a.75.75 0 00-.75-.75h-.008zM4.5 9.75A.75.75 0 015.25 9h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H5.25a.75.75 0 01-.75-.75V9.75z"
                 clip-rule="evenodd" />
               <path
-                d="M3 18.4v-2.796a4.3 4.3 0 00.713.31A26.226 26.226 0 0012 17.25c2.892 0 5.68-.468 8.287-1.335.252-.084.49-.189.713-.311V18.4c0 1.452-1.047 2.728-2.523 2.923-2.12.282-4.282.427-6.477.427a49.19 49.19 0 01-6.477-.427C4.047 21.128 3 19.852 3 18.4z" />
+                d="M2.25 18a.75.75 0 000 1.5c5.4 0 10.63.722 15.6 2.075 1.19.324 2.4-.558 2.4-1.82V18.75a.75.75 0 00-.75-.75H2.25z" />
             </svg>
           </div>
-          <h3 class="text-sm text-slate-500 font-medium mb-1">Salaire Moyen</h3>
-          <p class="text-3xl font-bold text-slate-800">0,00 MAD</p>
         </div>
-
-       
-      
-
-
-        
-      
-
+        <h3 class="text-sm text-slate-500 dark:text-[var(--color-text-muted)] font-medium">Total Collecté</h3>
+        <p id="totalCollecte" class="text-3xl font-bold text-slate-800 dark:text-[var(--color-text-primary)]">0 MAD</p>
       </div>
 
-      <!-- Content Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+      <!-- Salaire Moyen -->
+      <div class="stat-card dark:bg-[var(--color-dark-surface)] dark:border dark:border-[var(--color-border)]">
+        <div class="icon-box" style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"
+            style="color: #059669;">
+            <path fill-rule="evenodd"
+              d="M7.5 5.25a3 3 0 013-3h3a3 3 0 013 3v.205c.933.085 1.857.197 2.774.334 1.454.218 2.476 1.483 2.476 2.917v3.033c0 1.211-.734 2.352-1.936 2.752A24.726 24.726 0 0112 15.75c-2.73 0-5.357-.442-7.814-1.259-1.202-.4-1.936-1.541-1.936-2.752V8.706c0-1.434 1.022-2.7 2.476-2.917A48.814 48.814 0 017.5 5.455V5.25zm7.5 0v.09a49.488 49.488 0 00-6 0v-.09a1.5 1.5 0 011.5-1.5h3a1.5 1.5 0 011.5 1.5zm-3 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+              clip-rule="evenodd" />
+            <path
+              d="M3 18.4v-2.796a4.3 4.3 0 00.713.31A26.226 26.226 0 0012 17.25c2.892 0 5.68-.468 8.287-1.335.252-.084.49-.189.713-.311V18.4c0 1.452-1.047 2.728-2.523 2.923-2.12.282-4.282.427-6.477.427a49.19 49.19 0 01-6.477-.427C4.047 21.128 3 19.852 3 18.4z" />
+          </svg>
+        </div>
+        <h3 class="text-sm text-slate-500 dark:text-[var(--color-text-muted)] font-medium mb-1">Salaire Moyen</h3>
+        <p id="SalaireM" class="text-3xl font-bold text-slate-800 dark:text-[var(--color-text-primary)]">0,00 MAD</p>
+      </div>
+    </div>
 
-        <!-- Chart Section -->
-        <div class="lg:col-span-2 space-y-5">
-          <!-- Chart Card -->
-          <div class="bg-white rounded-2xl p-6 shadow-sm">
-            <div class="flex items-center justify-between mb-6">
-              <h2 class="text-lg font-semibold text-slate-800">Évolution des Cotisations</h2>
-              <div class="flex gap-2">
-                <button id="mois"
-                  class="px-3 py-1.5 text-xs font-medium bg-slate-100 text-slate-600 rounded-lg hover:bg-slate-200 transition">
-                  Mois
-                </button>
-                <button id="switch_button"
-                  class="px-3 py-1.5 text-xs font-medium text-slate-600 rounded-lg hover:bg-slate-100 transition">
-                  Année
-                </button>
-              </div>
+    <!-- Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+
+      <!-- Chart Section -->
+      <div class="lg:col-span-2 space-y-5">
+        <!-- Chart Card -->
+        <div class="bg-white dark:bg-[var(--color-dark-surface)] dark:border dark:border-[var(--color-border)] rounded-2xl p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-lg font-semibold text-slate-800 dark:text-[var(--color-text-primary)]">Évolution des Cotisations</h2>
+            <div class="flex gap-2">
+              <button id="mois"
+                class="px-3 py-1.5 text-xs font-medium bg-slate-100 dark:bg-[var(--color-dark-hover)] text-slate-600 dark:text-[var(--color-text-secondary)] rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition">
+                Mois
+              </button>
+              <button id="switch_button"
+                class="px-3 py-1.5 text-xs font-medium text-slate-600 dark:text-[var(--color-text-secondary)] rounded-lg hover:bg-slate-100 dark:hover:bg-[var(--color-dark-hover)] transition">
+                Année
+              </button>
             </div>
-            <div class="chartjs">
-              <p class="mois">Chart-axix-X = Les mois</p>
-              <p class="total-collecte">Chart-axix-Y= Total Collecté</p>
-            </div>
-            <!-- Chart -->
-            <div class="chart-container">
-              <canvas class="mychart" height="120"></canvas>
-              <!--
-            <div class="chart-axis chart-axis-y">
-              <span>4</span>
-              <span>3</span>
-              <span>2</span>
-              <span>1</span>
-              <span>0</span>
-            </div>
-            <div class="chart-axis chart-axis-x">
-              <span>Jan</span>
-              <span>Fév</span>
-              <span>mars</span>
-              <span>avril</span>
-              <span>mai</span>
-            </div>
-           <div class="text-slate-400 text-sm">Graphique des cotisations</div>-->
-            </div>
+          </div>
+          <!-- Chart -->
+          <div class="chart-container">
+            <canvas class="mychart" height="120"></canvas>
           </div>
         </div>
-
-        <!-- Right Column -->
-        <div class="space-y-5">
-
-          <!-- Rappel Réglementaire -->
-          <div class="reminder-card">
-            <h3>Rappel Réglementaire</h3>
-            <p>Les déclarations mensuelles doivent être soumises avant le 15 de chaque mois suivant la période
-              travaillée.</p>
-            <ul class="reminder-list">
-              <li>Plafond CNSS: 6,000 MAD</li>
-              <li>Part Salariale: 4.48%</li>
-              <li>Part Patronale: 20%</li>
-            </ul>
-          </div>
-            </div>
-
-          </div>
-
-        </div>
-
       </div>
 
-    </main>
+      <!-- Right Column -->
+      <div class="space-y-5">
 
-  </div>
-  <div>
+        <!-- Rappel Réglementaire -->
+        <div class="reminder-card dark:bg-[var(--color-dark-surface)] dark:border dark:border-[var(--color-border)]">
+          <h3 class="dark:text-[var(--color-text-primary)]">Rappel Réglementaire</h3>
+          <p class="dark:text-[var(--color-text-secondary)]">Les déclarations mensuelles doivent être soumises avant le 15 de chaque mois suivant la période
+            travaillée.</p>
+          <ul class="reminder-list">
+            <li class="dark:text-[var(--color-text-secondary)] dark:before:text-[var(--color-accent-blue)]">Plafond CNSS: 6,000 MAD</li>
+            <li class="dark:text-[var(--color-text-secondary)] dark:before:text-[var(--color-accent-blue)]">Part Salariale: 4.48%</li>
+            <li class="dark:text-[var(--color-text-secondary)] dark:before:text-[var(--color-accent-blue)]">Part Patronale: 20%</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
 
-  </div>
   <script src="dashboard.js"></script>
-
+  <script src="/darkMode.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 
