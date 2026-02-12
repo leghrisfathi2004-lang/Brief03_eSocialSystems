@@ -1,7 +1,7 @@
 # 🏢 e-Social Systems | Simulateur de Sécurité Sociale (CNSS)
 > **Moteur de gestion JavaScript ES6 pour la déclaration et le calcul des cotisations sociales.**
 
-
+<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/330600bb-8ef7-439f-8cac-6d339281e8e1" />
 
 
 ## 🛠️ Stack Technique & Outils
