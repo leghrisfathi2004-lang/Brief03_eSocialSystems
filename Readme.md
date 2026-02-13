@@ -3,7 +3,6 @@
 
 <img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/330600bb-8ef7-439f-8cac-6d339281e8e1" />
 
-
 ## 🛠️ Stack Technique & Outils
 
 L'application a été construite avec les technologies et outils suivants :
@@ -71,11 +70,11 @@ Ce projet vise à fournir une interface robuste et automatisée pour la gestion 
 ---
 ## 👥 L'Équipe e-Social Systems
 
-Projet réalisé avec passion par :
+Projet réalisé par :
 
-- **[Leghris Fathi](https://github.com/pseudo1)** 
-- **[walid ](https://github.com/pseudo2)** 
-- **[oussam](https://github.com/pseudo3)** 
-- **[Mohammed Gedri](https://github.com/pseudo4)** 
-- **[taha](https://github.com/pseudo5)** 
+- **[Leghris Fathi](https://github.com/leghrisfathi2004-lang)** 
+- **[Walid Noussir](https://github.com/walidnoussir)** 
+- **[Houssam elarsaoui](https://github.com/l9iirch-hub)** 
+- **[Mohamed Gadri](https://github.com/Gadridev)** 
+- **[Taha yassine najjar](https://github.com/tahayassine2000najjar-droid)** 
 ---
